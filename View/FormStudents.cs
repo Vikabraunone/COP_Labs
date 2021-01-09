@@ -119,21 +119,6 @@ namespace View
             LoadData();
         }
 
-        /// <summary>
-        /// Выбрать строку
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonSetId_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                controlDataGridViewOutput.SelectedLinkDataGridView(int.Parse(textBoxSetId.Text));
-                textBoxCurrentId.Text = controlDataGridViewOutput.SelectedIndex.ToString();
-            }
-            catch { }
-        }
-
         private void controlDataGridViewOutput_DataGridViewSelectionChanged(object sender, EventArgs e)
         {
             textBoxCurrentId.Text = controlDataGridViewOutput.SelectedIndex.ToString();
@@ -239,6 +224,117 @@ namespace View
         private void adapterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new FormWorkers().ShowDialog();
+        }
+
+        /// <summary>
+        /// Зачислить студента
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonEnroll_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormStudent>();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    var student =
+                        new StudentBindingModel
+                        {
+                            FIO = form.FIO,
+                            FormEducation = form.FormEducation,
+                            AverageRating = form.AverageRating,
+                            Email = form.Email
+                        };
+                    componentCommand.LoadCommand(this.studentLogic, student);
+                    componentCommand.Enroll();
+                    MessageBox.Show("Студент зачислен");
+                    LoadData();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Обновить студента
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonInfoUpdateStudent_Click(object sender, EventArgs e)
+        {
+            if (controlDataGridViewOutput.CountSelectedRows() == 1)
+            {
+                var form = Container.Resolve<FormStudent>();
+                form.Id = Convert.ToInt32(controlDataGridViewOutput.SelectedText);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        var student =
+                            new StudentBindingModel
+                            {
+                                Id = form.Id,
+                                FIO = form.FIO,
+                                FormEducation = form.FormEducation,
+                                AverageRating = form.AverageRating,
+                                Email = form.Email
+                            };
+                        componentCommand.LoadCommand(this.studentLogic, student);
+                        componentCommand.Change();
+                        MessageBox.Show("Запись о студенте изменена");
+                        LoadData();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Отчислить студента
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonDeduct_Click(object sender, EventArgs e)
+        {
+            if (controlDataGridViewOutput.CountSelectedRows() == 1)
+            {
+                try
+                {
+                    var student = new StudentBindingModel
+                    {
+                        Id = Convert.ToInt32(controlDataGridViewOutput.SelectedText)
+                    };
+                    componentCommand.LoadCommand(this.studentLogic, student);
+                    componentCommand.Deduct();
+                    MessageBox.Show("Студент отчислен");
+                    LoadData();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Выбрать строку
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonSetId_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                controlDataGridViewOutput.SelectedLinkDataGridView(int.Parse(textBoxSetId.Text));
+                textBoxCurrentId.Text = controlDataGridViewOutput.SelectedIndex.ToString();
+            }
+            catch { }
         }
     }
 }
