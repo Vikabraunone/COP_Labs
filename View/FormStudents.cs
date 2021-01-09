@@ -230,5 +230,10 @@ namespace View
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void abstractFactoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FormAbstractFactory().ShowDialog();
+        }
     }
 }
