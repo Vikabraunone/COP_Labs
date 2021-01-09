@@ -3,9 +3,6 @@ using System.Windows.Forms;
 
 namespace View
 {
-    /// <summary>
-    /// Вспомогательная форма для FormControlSelected
-    /// </summary>
     public partial class FormSetText : Form
     {
         public string TextValue => textBox.Text;

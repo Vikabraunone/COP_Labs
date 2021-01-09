@@ -5,9 +5,6 @@ using System.Windows.Forms;
 
 namespace ClassLibraryControl
 {
-    /// <summary>
-    /// Компонент вывода списка
-    /// </summary>
     public partial class ControlListBoxGetting : UserControl
     {
         /// <summary>

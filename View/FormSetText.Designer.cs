@@ -1,6 +1,4 @@
 ﻿
-using System;
-
 namespace View
 {
     partial class FormSetText

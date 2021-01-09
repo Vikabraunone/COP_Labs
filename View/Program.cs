@@ -14,7 +14,7 @@ namespace View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain(TestStudents.Students.ToList()));
+            Application.Run(new FormComponents(TestStudents.Students.ToList()));
         }
     }
 }

@@ -4,12 +4,12 @@ namespace View
 {
     public static class TestStudents
     {
-        public static Student[] Students = new Student[]
-        {
+        public static Student[] Students = new Student []
+        { 
             new Student
             {
                 FIO = "Иванов Иван Иванович",
-                Age = 18,
+                Age = 18, 
                 Course = 1,
                 DateBirth = new DateTime(2001, 5, 1)
             },
