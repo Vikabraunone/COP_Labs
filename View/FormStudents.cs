@@ -322,6 +322,11 @@ namespace View
             }
         }
 
+        private void плагиныToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Container.Resolve<FormPlagins>().ShowDialog();
+        }
+
         /// <summary>
         /// Выбрать строку
         /// </summary>

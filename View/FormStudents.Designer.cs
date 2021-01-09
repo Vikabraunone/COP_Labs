@@ -38,6 +38,7 @@
             this.паттерныToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abstractFactoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adapterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.плагиныToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.componentExcelReport = new ClassLibraryExcelReport.ExcelComponent();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
@@ -70,7 +71,8 @@
             this.бекапToolStripMenuItem,
             this.отчетПоСтудентамToolStripMenuItem,
             this.диаграммаПоФормамОбученияToolStripMenuItem,
-            this.паттерныToolStripMenuItem});
+            this.паттерныToolStripMenuItem,
+            this.плагиныToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(843, 24);
@@ -136,6 +138,13 @@
             this.adapterToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.adapterToolStripMenuItem.Text = "Adapter";
             this.adapterToolStripMenuItem.Click += new System.EventHandler(this.adapterToolStripMenuItem_Click);
+            // 
+            // плагиныToolStripMenuItem
+            // 
+            this.плагиныToolStripMenuItem.Name = "плагиныToolStripMenuItem";
+            this.плагиныToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.плагиныToolStripMenuItem.Text = "Плагины";
+            this.плагиныToolStripMenuItem.Click += new System.EventHandler(this.плагиныToolStripMenuItem_Click);
             // 
             // buttonAdd
             // 
@@ -247,7 +256,7 @@
             this.groupBoxDataGridView.Controls.Add(this.buttonSetId);
             this.groupBoxDataGridView.Controls.Add(this.textBoxCurrentId);
             this.groupBoxDataGridView.Controls.Add(this.labelCurrentId);
-            this.groupBoxDataGridView.Location = new System.Drawing.Point(465, 362);
+            this.groupBoxDataGridView.Location = new System.Drawing.Point(460, 371);
             this.groupBoxDataGridView.Name = "groupBoxDataGridView";
             this.groupBoxDataGridView.Size = new System.Drawing.Size(136, 161);
             this.groupBoxDataGridView.TabIndex = 20;
@@ -339,6 +348,7 @@
         private System.Windows.Forms.Button buttonInfoUpdateStudent;
         private System.Windows.Forms.GroupBox groupBoxCRUD;
         private ClassLibraryControl.Patterns.ComponentCommand componentCommand;
+        private System.Windows.Forms.ToolStripMenuItem плагиныToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBoxDataGridView;
         private System.Windows.Forms.TextBox textBoxSetId;
         private System.Windows.Forms.Button buttonSetId;
