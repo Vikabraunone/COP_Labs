@@ -37,6 +37,7 @@
             this.диаграммаПоФормамОбученияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.паттерныToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abstractFactoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adapterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.controlDataGridViewOutput = new ClassLibraryControl.ExternalComponents.ControlDataGridViewOutput();
             this.componentRestore = new ClassLibraryControl.ExternalComponents.ComponentRestore(this.components);
             this.componentBackUp = new ClassLibraryControl.Components.ComponentBackUp(this.components);
@@ -62,7 +63,7 @@
             this.паттерныToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(968, 24);
+            this.menuStrip.Size = new System.Drawing.Size(975, 24);
             this.menuStrip.TabIndex = 12;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -106,7 +107,8 @@
             // паттерныToolStripMenuItem
             // 
             this.паттерныToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.abstractFactoryToolStripMenuItem});
+            this.abstractFactoryToolStripMenuItem,
+            this.adapterToolStripMenuItem});
             this.паттерныToolStripMenuItem.Name = "паттерныToolStripMenuItem";
             this.паттерныToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
             this.паттерныToolStripMenuItem.Text = "Паттерны";
@@ -117,6 +119,13 @@
             this.abstractFactoryToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.abstractFactoryToolStripMenuItem.Text = "AbstractFactory";
             this.abstractFactoryToolStripMenuItem.Click += new System.EventHandler(this.abstractFactoryToolStripMenuItem_Click);
+            // 
+            // adapterToolStripMenuItem
+            // 
+            this.adapterToolStripMenuItem.Name = "adapterToolStripMenuItem";
+            this.adapterToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.adapterToolStripMenuItem.Text = "Adapter";
+            this.adapterToolStripMenuItem.Click += new System.EventHandler(this.adapterToolStripMenuItem_Click);
             // 
             // controlDataGridViewOutput
             // 
@@ -170,41 +179,41 @@
             // labelCurrentId
             // 
             this.labelCurrentId.AutoSize = true;
-            this.labelCurrentId.Location = new System.Drawing.Point(840, 306);
+            this.labelCurrentId.Location = new System.Drawing.Point(840, 292);
             this.labelCurrentId.Name = "labelCurrentId";
             this.labelCurrentId.Size = new System.Drawing.Size(64, 13);
-            this.labelCurrentId.TabIndex = 25;
+            this.labelCurrentId.TabIndex = 21;
             this.labelCurrentId.Text = "Текущий Id";
             // 
             // textBoxCurrentId
             // 
-            this.textBoxCurrentId.Location = new System.Drawing.Point(843, 322);
+            this.textBoxCurrentId.Location = new System.Drawing.Point(843, 308);
             this.textBoxCurrentId.Name = "textBoxCurrentId";
             this.textBoxCurrentId.Size = new System.Drawing.Size(115, 20);
-            this.textBoxCurrentId.TabIndex = 24;
+            this.textBoxCurrentId.TabIndex = 20;
             // 
             // buttonSetId
             // 
-            this.buttonSetId.Location = new System.Drawing.Point(843, 232);
+            this.buttonSetId.Location = new System.Drawing.Point(843, 218);
             this.buttonSetId.Name = "buttonSetId";
             this.buttonSetId.Size = new System.Drawing.Size(115, 41);
-            this.buttonSetId.TabIndex = 23;
+            this.buttonSetId.TabIndex = 19;
             this.buttonSetId.Text = "Выбрать номер строки";
             this.buttonSetId.UseVisualStyleBackColor = true;
             this.buttonSetId.Click += new System.EventHandler(this.buttonSetId_Click);
             // 
             // textBoxSetId
             // 
-            this.textBoxSetId.Location = new System.Drawing.Point(843, 206);
+            this.textBoxSetId.Location = new System.Drawing.Point(843, 192);
             this.textBoxSetId.Name = "textBoxSetId";
             this.textBoxSetId.Size = new System.Drawing.Size(115, 20);
-            this.textBoxSetId.TabIndex = 22;
+            this.textBoxSetId.TabIndex = 18;
             // 
             // FormStudents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(968, 361);
+            this.ClientSize = new System.Drawing.Size(975, 361);
             this.Controls.Add(this.labelCurrentId);
             this.Controls.Add(this.textBoxCurrentId);
             this.Controls.Add(this.buttonSetId);
@@ -246,6 +255,7 @@
         private System.Windows.Forms.Button buttonRef;
         private System.Windows.Forms.ToolStripMenuItem паттерныToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem abstractFactoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adapterToolStripMenuItem;
         private System.Windows.Forms.Label labelCurrentId;
         private System.Windows.Forms.TextBox textBoxCurrentId;
         private System.Windows.Forms.Button buttonSetId;

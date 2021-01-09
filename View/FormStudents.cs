@@ -235,5 +235,10 @@ namespace View
         {
             new FormAbstractFactory().ShowDialog();
         }
+
+        private void adapterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FormWorkers().ShowDialog();
+        }
     }
 }

@@ -1,64 +1,43 @@
 ﻿using BusinessLogic.BindingModels;
-using BusinessLogic.Enums;
-using BusinessLogic.Interfaces;
-using BusinessLogic.ViewModels;
 using System;
-using System.Data;
-using System.Linq;
 using System.Windows.Forms;
-using Unity;
 
 namespace View
 {
-    public partial class FormStudent : Form
+    public partial class FormWorker : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-
-        private readonly IStudentLogic studentLogic;
-
         public int? Id { get; set; }
 
         public string FIO { get; private set; }
 
-        public FormEducation FormEducation { get; private set; }
-
         public string Email { get; private set; }
 
-        public double AverageRating { get; private set; }
+        public double Wages { get; private set; }
 
-        public FormStudent(IStudentLogic studentLogic)
+        public FormWorker()
         {
             InitializeComponent();
-            this.studentLogic = studentLogic;
-            comboBoxFormEducation.DataSource = Enum.GetValues(typeof(FormEducation))
-                            .Cast<FormEducation>()
-                            .Select(x => x.ToString())
-                            .ToList();
+            componentAdapter.LoadPattern();
         }
 
-        private void FormStudent_Load(object sender, EventArgs e)
+        private void FormWorker_Load(object sender, EventArgs e)
         {
             if (Id.HasValue)
             {
                 try
                 {
-                    StudentViewModel view = studentLogic.Read(new StudentBindingModel { Id = this.Id })?[0];
-                    if (view != null)
+                    var worker = componentAdapter.Read(new StudentBindingModel { Id = Id })?[0];
+                    if (worker != null)
                     {
-                        textBoxFIO.Text = view.FIO;
-                        textBoxEmail.Text = view.Email;
-                        comboBoxFormEducation.SelectedIndex = (int)view.FormEducation;
+                        textBoxFIO.Text = worker.FIO;
+                        textBoxEmail.Text = worker.Email;
+                        textBoxWages.Text = worker.AverageRating.ToString();
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            else
-            {
-                comboBoxFormEducation.SelectedItem = null;
             }
         }
 
@@ -74,13 +53,7 @@ namespace View
                 MessageBox.Show("Заполните электронную почту", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (comboBoxFormEducation.SelectedValue == null)
-            {
-                MessageBox.Show("Укажите форму обучения", "Ошибка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (!double.TryParse(textBoxAverageRating.Text, out double ar))
+            if (!double.TryParse(textBoxWages.Text, out double wages))
             {
                 MessageBox.Show("Балл должен быть числом", "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -89,9 +62,8 @@ namespace View
             try
             {
                 FIO = textBoxFIO.Text;
-                FormEducation = (FormEducation)Enum.Parse(typeof(FormEducation), comboBoxFormEducation.SelectedItem.ToString());
                 Email = textBoxEmail.Text;
-                AverageRating = ar;
+                Wages = wages;
                 DialogResult = DialogResult.OK;
                 Close();
             }
